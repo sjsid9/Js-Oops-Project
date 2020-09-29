@@ -1,0 +1,19 @@
+{
+  "name": "oopsproject",
+  "version": "1.0.0",
+  "description": "OOP's Project in JS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sjsid9/Js-Oops-Project.git"
+  },
+  "author": "Siddhant Jain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sjsid9/Js-Oops-Project/issues"
+  },
+  "homepage": "https://github.com/sjsid9/Js-Oops-Project#readme"
+}
