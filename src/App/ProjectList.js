@@ -2,8 +2,8 @@ import { ProductItem } from './ProductItem.js';
 import { DOMHelper } from '../Utility/DOMHelper.js';
 
 export class ProductList {
-  projects = [];
   constructor(type) {
+    this.projects = [];
     this.type = type;
     const prjItems = document.querySelectorAll(`#${this.type}-projects li`);
     for (const prjItem of prjItems) {
