@@ -1,1 +1,252 @@
-!function(t){function e(e){for(var n,o,i=e[0],s=e[1],c=0,d=[];c<i.length;c++)o=i[c],Object.prototype.hasOwnProperty.call(r,o)&&r[o]&&d.push(r[o][0]),r[o]=0;for(n in s)Object.prototype.hasOwnProperty.call(s,n)&&(t[n]=s[n]);for(a&&a(e);d.length;)d.shift()()}var n={},r={0:0};function o(e){if(n[e])return n[e].exports;var r=n[e]={i:e,l:!1,exports:{}};return t[e].call(r.exports,r,r.exports,o),r.l=!0,r.exports}o.e=function(t){var e=[],n=r[t];if(0!==n)if(n)e.push(n[2]);else{var i=new Promise((function(e,o){n=r[t]=[e,o]}));e.push(n[2]=i);var s,c=document.createElement("script");c.charset="utf-8",c.timeout=120,o.nc&&c.setAttribute("nonce",o.nc),c.src=function(t){return o.p+""+t+".app.js"}(t);var a=new Error;s=function(e){c.onerror=c.onload=null,clearTimeout(d);var n=r[t];if(0!==n){if(n){var o=e&&("load"===e.type?"missing":e.type),i=e&&e.target&&e.target.src;a.message="Loading chunk "+t+" failed.\n("+o+": "+i+")",a.name="ChunkLoadError",a.type=o,a.request=i,n[1](a)}r[t]=void 0}};var d=setTimeout((function(){s({type:"timeout",target:c})}),12e4);c.onerror=c.onload=s,document.head.appendChild(c)}return Promise.all(e)},o.m=t,o.c=n,o.d=function(t,e,n){o.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:n})},o.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},o.t=function(t,e){if(1&e&&(t=o(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var r in t)o.d(n,r,function(e){return t[e]}.bind(null,r));return n},o.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return o.d(e,"a",e),e},o.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},o.p="",o.oe=function(t){throw console.error(t),t};var i=window.webpackJsonp=window.webpackJsonp||[],s=i.push.bind(i);i.push=e,i=i.slice();for(var c=0;c<i.length;c++)e(i[c]);var a=s;o(o.s=0)}([function(t,e,n){"use strict";n.r(e);class r{static moveElement(t,e){const n=document.getElementById(t);document.querySelector(e).append(n),n.scrollIntoView({behavior:"smooth"})}static clearEventListeners(t){const e=t.cloneNode(!0);return t.replaceWith(e),e}}class o{constructor(t,e,n){this.hasActiveTooltip=!1,this.id=t,this.updateProjectsListHandler=e,this.connectSwitchButton(n),this.connectMoreInfoButton(),this.connectDrag()}connectDrag(){document.getElementById(this.id).addEventListener("dragstart",t=>{t.dataTransfer.setData("text/plain",this.id),t.dataTransfer.effectAllowed="move"})}connectSwitchButton(t){let e=document.getElementById(this.id).querySelector("button:last-of-type");e=r.clearEventListeners(e),e.textContent="active"===t?"Finish":"Activate",e.addEventListener("click",this.updateProjectsListHandler.bind(null,this.id))}showInfoHandler(){if(this.hasActiveTooltip)return;const t=document.getElementById(this.id).dataset.extraInfo;n.e(1).then(n.bind(null,1)).then(e=>{new e.Tooltip(()=>{this.hasActiveTooltip=!1},t,this.id).attach(),this.hasActiveTooltip=!0})}connectMoreInfoButton(){document.getElementById(this.id).querySelector("button:first-of-type").addEventListener("click",this.showInfoHandler.bind(this))}update(t,e){this.updateProjectsListHandler=t,this.connectSwitchButton(e)}}class i{constructor(t){this.projects=[],this.type=t;const e=document.querySelectorAll(`#${this.type}-projects li`);for(const t of e)this.projects.push(new o(t.id,this.switchProject.bind(this),this.type));this.connectDroppable()}connectDroppable(){const t=document.querySelector(`#${this.type}-projects ul`);t.addEventListener("dragenter",e=>{"text/plain"===e.dataTransfer.types[0]&&(e.preventDefault(),t.parentElement.classList.add("droppable"))}),t.addEventListener("dragover",t=>{"text/plain"===t.dataTransfer.types[0]&&t.preventDefault()}),t.addEventListener("dragleave",e=>{e.relatedTarget.closest(`#${this.type}-projects ul`)!==t&&t.parentElement.classList.remove("droppable")}),t.addEventListener("drop",e=>{const n=e.dataTransfer.getData("text/plain");this.projects.find(t=>t.id===n)||document.getElementById(n).querySelector("button:last-of-type").click(),t.parentElement.classList.remove("droppable")})}switchProject(t){console.log("ProjectId",t),this.switchHandler(this.projects.find(e=>e.id===t)),this.projects=this.projects.filter(e=>e.id!==t)}addProject(t){this.projects.push(t),r.moveElement(t.id,`#${this.type}-projects ul`),t.update(this.switchProject.bind(this),this.type)}setSwitchHandler(t){this.switchHandler=t}}(class{static init(){const t=new i("active"),e=new i("finished");t.setSwitchHandler(e.addProject.bind(e)),e.setSwitchHandler(t.addProject.bind(t))}static startAnalytics(){const t=document.createElement("script");t.src="assets/scripts/analytics.js",t.defer=!0,document.querySelector("head").append(t)}}).init()}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(Object.prototype.hasOwnProperty.call(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 	};
+/******/
+/******/
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		"main": 0
+/******/ 	};
+/******/
+/******/
+/******/
+/******/ 	// script path function
+/******/ 	function jsonpScriptSrc(chunkId) {
+/******/ 		return __webpack_require__.p + "" + chunkId + ".app.js"
+/******/ 	}
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var promises = [];
+/******/
+/******/
+/******/ 		// JSONP chunk loading for javascript
+/******/
+/******/ 		var installedChunkData = installedChunks[chunkId];
+/******/ 		if(installedChunkData !== 0) { // 0 means "already installed".
+/******/
+/******/ 			// a Promise means "currently loading".
+/******/ 			if(installedChunkData) {
+/******/ 				promises.push(installedChunkData[2]);
+/******/ 			} else {
+/******/ 				// setup Promise in chunk cache
+/******/ 				var promise = new Promise(function(resolve, reject) {
+/******/ 					installedChunkData = installedChunks[chunkId] = [resolve, reject];
+/******/ 				});
+/******/ 				promises.push(installedChunkData[2] = promise);
+/******/
+/******/ 				// start chunk loading
+/******/ 				var script = document.createElement('script');
+/******/ 				var onScriptComplete;
+/******/
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120;
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				script.src = jsonpScriptSrc(chunkId);
+/******/
+/******/ 				// create error before stack unwound to get useful stacktrace later
+/******/ 				var error = new Error();
+/******/ 				onScriptComplete = function (event) {
+/******/ 					// avoid mem leaks in IE.
+/******/ 					script.onerror = script.onload = null;
+/******/ 					clearTimeout(timeout);
+/******/ 					var chunk = installedChunks[chunkId];
+/******/ 					if(chunk !== 0) {
+/******/ 						if(chunk) {
+/******/ 							var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 							var realSrc = event && event.target && event.target.src;
+/******/ 							error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
+/******/ 							error.name = 'ChunkLoadError';
+/******/ 							error.type = errorType;
+/******/ 							error.request = realSrc;
+/******/ 							chunk[1](error);
+/******/ 						}
+/******/ 						installedChunks[chunkId] = undefined;
+/******/ 					}
+/******/ 				};
+/******/ 				var timeout = setTimeout(function(){
+/******/ 					onScriptComplete({ type: 'timeout', target: script });
+/******/ 				}, 120000);
+/******/ 				script.onerror = script.onload = onScriptComplete;
+/******/ 				document.head.appendChild(script);
+/******/ 			}
+/******/ 		}
+/******/ 		return Promise.all(promises);
+/******/ 	};
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "assets/scripts/";
+/******/
+/******/ 	// on error function for async loading
+/******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
+/******/
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/app.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/App/ProductItem.js":
+/*!********************************!*\
+  !*** ./src/App/ProductItem.js ***!
+  \********************************/
+/*! exports provided: ProductItem */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ProductItem\", function() { return ProductItem; });\n/* harmony import */ var _Utility_DOMHelper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Utility/DOMHelper.js */ \"./src/Utility/DOMHelper.js\");\n\r\n// import { Tooltip } from './Tooltip.js';\r\n\r\nclass ProductItem {\r\n  \r\n\r\n  constructor(id, updateProjectsListFunction, type) {\r\n    this.hasActiveTooltip = false;\r\n    this.id = id;\r\n    this.updateProjectsListHandler = updateProjectsListFunction;\r\n    this.connectSwitchButton(type);\r\n    this.connectMoreInfoButton();\r\n    this.connectDrag();\r\n  }\r\n\r\n  connectDrag() {\r\n    document.getElementById(this.id).addEventListener('dragstart', (event) => {\r\n      event.dataTransfer.setData('text/plain', this.id);\r\n      event.dataTransfer.effectAllowed = 'move';\r\n    });\r\n  }\r\n\r\n  connectSwitchButton(type) {\r\n    const projectElement = document.getElementById(this.id);\r\n    let switchButton = projectElement.querySelector('button:last-of-type');\r\n    switchButton = _Utility_DOMHelper_js__WEBPACK_IMPORTED_MODULE_0__[\"DOMHelper\"].clearEventListeners(switchButton);\r\n    switchButton.textContent = type === 'active' ? 'Finish' : 'Activate';\r\n    switchButton.addEventListener(\r\n      'click',\r\n      this.updateProjectsListHandler.bind(null, this.id)\r\n    );\r\n  }\r\n\r\n  showInfoHandler() {\r\n    if (this.hasActiveTooltip) {\r\n      return;\r\n    }\r\n    const projectElement = document.getElementById(this.id);\r\n    const text = projectElement.dataset.extraInfo;\r\n\r\n    __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./Tooltip.js */ \"./src/App/Tooltip.js\")).then((module) => {\r\n      const tooltip = new module.Tooltip(\r\n        () => {\r\n          this.hasActiveTooltip = false;\r\n        },\r\n        text,\r\n        this.id\r\n      );\r\n      tooltip.attach();\r\n      this.hasActiveTooltip = true;\r\n    });\r\n  }\r\n\r\n  connectMoreInfoButton() {\r\n    const projectElement = document.getElementById(this.id);\r\n    let moreInfoButton = projectElement.querySelector('button:first-of-type');\r\n    moreInfoButton.addEventListener('click', this.showInfoHandler.bind(this));\r\n  }\r\n\r\n  update(updateProjectsListFunction, type) {\r\n    this.updateProjectsListHandler = updateProjectsListFunction;\r\n    this.connectSwitchButton(type);\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/App/ProductItem.js?");
+
+/***/ }),
+
+/***/ "./src/App/ProjectList.js":
+/*!********************************!*\
+  !*** ./src/App/ProjectList.js ***!
+  \********************************/
+/*! exports provided: ProductList */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ProductList\", function() { return ProductList; });\n/* harmony import */ var _ProductItem_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProductItem.js */ \"./src/App/ProductItem.js\");\n/* harmony import */ var _Utility_DOMHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Utility/DOMHelper.js */ \"./src/Utility/DOMHelper.js\");\n\r\n\r\n\r\nclass ProductList {\r\n  constructor(type) {\r\n    this.projects = [];\r\n    this.type = type;\r\n    const prjItems = document.querySelectorAll(`#${this.type}-projects li`);\r\n    for (const prjItem of prjItems) {\r\n      this.projects.push(\r\n        new _ProductItem_js__WEBPACK_IMPORTED_MODULE_0__[\"ProductItem\"](prjItem.id, this.switchProject.bind(this), this.type)\r\n      );\r\n    }\r\n    this.connectDroppable();\r\n  }\r\n\r\n  connectDroppable() {\r\n    const list = document.querySelector(`#${this.type}-projects ul`);\r\n\r\n    list.addEventListener('dragenter', (event) => {\r\n      if (event.dataTransfer.types[0] === 'text/plain') {\r\n        event.preventDefault();\r\n        list.parentElement.classList.add('droppable');\r\n      }\r\n    });\r\n\r\n    list.addEventListener('dragover', (event) => {\r\n      if (event.dataTransfer.types[0] === 'text/plain') {\r\n        event.preventDefault();\r\n      }\r\n    });\r\n\r\n    list.addEventListener('dragleave', (event) => {\r\n      if (event.relatedTarget.closest(`#${this.type}-projects ul`) !== list) {\r\n        list.parentElement.classList.remove('droppable');\r\n      }\r\n    });\r\n\r\n    list.addEventListener('drop', (event) => {\r\n      const prjId = event.dataTransfer.getData('text/plain');\r\n      if (this.projects.find((prj) => prj.id === prjId)) {\r\n        list.parentElement.classList.remove('droppable');\r\n        return;\r\n      }\r\n      document\r\n        .getElementById(prjId)\r\n        .querySelector('button:last-of-type')\r\n        .click();\r\n\r\n      list.parentElement.classList.remove('droppable');\r\n      // event.preventDefault(); optional not required\r\n    });\r\n  }\r\n\r\n  switchProject(projectId) {\r\n    console.log('ProjectId', projectId);\r\n    this.switchHandler(this.projects.find((p) => p.id === projectId));\r\n    this.projects = this.projects.filter((p) => p.id !== projectId);\r\n  }\r\n\r\n  addProject(project) {\r\n    // console.log('Item', project);\r\n    // console.log(this);\r\n    this.projects.push(project);\r\n    _Utility_DOMHelper_js__WEBPACK_IMPORTED_MODULE_1__[\"DOMHelper\"].moveElement(project.id, `#${this.type}-projects ul`);\r\n    project.update(this.switchProject.bind(this), this.type);\r\n  }\r\n\r\n  setSwitchHandler(switchHandlerFunction) {\r\n    this.switchHandler = switchHandlerFunction;\r\n  }\r\n}\r\n\n\n//# sourceURL=webpack:///./src/App/ProjectList.js?");
+
+/***/ }),
+
+/***/ "./src/Utility/DOMHelper.js":
+/*!**********************************!*\
+  !*** ./src/Utility/DOMHelper.js ***!
+  \**********************************/
+/*! exports provided: DOMHelper */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DOMHelper\", function() { return DOMHelper; });\nclass DOMHelper {\r\n    static moveElement(elementId, newDestinationSelector) {\r\n      const element = document.getElementById(elementId);\r\n      const destinationElement = document.querySelector(newDestinationSelector);\r\n      destinationElement.append(element);\r\n      element.scrollIntoView({ behavior: 'smooth' });\r\n    }\r\n    static clearEventListeners(element) {\r\n      const clonedElement = element.cloneNode(true);\r\n      element.replaceWith(clonedElement);\r\n      return clonedElement;\r\n    }\r\n  }\n\n//# sourceURL=webpack:///./src/Utility/DOMHelper.js?");
+
+/***/ }),
+
+/***/ "./src/app.js":
+/*!********************!*\
+  !*** ./src/app.js ***!
+  \********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _App_ProjectList_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App/ProjectList.js */ \"./src/App/ProjectList.js\");\n\r\n\r\nclass App {\r\n  static init() {\r\n    const activeList = new _App_ProjectList_js__WEBPACK_IMPORTED_MODULE_0__[\"ProductList\"]('active');\r\n    const finishedList = new _App_ProjectList_js__WEBPACK_IMPORTED_MODULE_0__[\"ProductList\"]('finished');\r\n    activeList.setSwitchHandler(finishedList.addProject.bind(finishedList));\r\n    finishedList.setSwitchHandler(activeList.addProject.bind(activeList));\r\n\r\n    // document\r\n    //   .getElementById('start-analytics-btn')\r\n    //   .addEventListener('click', this.startAnalytics);\r\n\r\n    // this.showAlertScript();\r\n  }\r\n\r\n  // static showAlertScript() {\r\n  //   const alertScript = document.createElement('script');\r\n  //   alertScript.textContent = \"alert('Hi there')\";\r\n  //   document.querySelector('head').append(alertScript);\r\n  // }\r\n\r\n  static startAnalytics() {\r\n    const startAnalyticsScript = document.createElement('script');\r\n    startAnalyticsScript.src = 'assets/scripts/analytics.js';\r\n    startAnalyticsScript.defer = true;\r\n    document.querySelector('head').append(startAnalyticsScript);\r\n  }\r\n}\r\n\r\nApp.init();\r\n\n\n//# sourceURL=webpack:///./src/app.js?");
+
+/***/ })
+
+/******/ });
